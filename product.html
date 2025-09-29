@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Photo Collage Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --gap: 10px;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #fafafa;
+        padding: 40px 20px;
+      }
+
+      .mosaic-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--gap);
+      }
+
+      .mosaic-gallery img {
+        width: 100%;
+        height: 180px; /* controls uniform height */
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+      }
+
+      .item {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Optional variation (still keeps image sizes smaller) */
+      .item.large img {
+        height: 240px;
+      }
+
+      .item.tall img {
+        height: 220px;
+      }
+
+      .item.wide img {
+        height: 180px;
+      }
+
+      @media (max-width: 768px) {
+        .mosaic-gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mosaic-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .item img {
+          height: 160px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center; color: #333">Our Photo Collage</h2>
+
+    <div class="mosaic-gallery">
+      <div class="item"><img src="images/Photo1.webp" alt="Image 1" /></div>
+      <div class="item large">
+        <img src="images/Photo2.webp" alt="Image 2" />
+      </div>
+      <div class="item tall">
+        <img src="images/Photo3.webp" alt="Image 3" />
+      </div>
+      <div class="item"><img src="images/Photo4.webp" alt="Image 4" /></div>
+      <div class="item wide">
+        <img src="images/Photo5.webp" alt="Image 5" />
+      </div>
+      <div class="item"><img src="images/Photo6.webp" alt="Image 6" /></div>
+      <div class="item"><img src="images/Photo7.webp" alt="Image 7" /></div>
+      <div class="item large">
+        <img src="images/Photo8.webp" alt="Image 8" />
+      </div>
+      <div class="item tall">
+        <img src="images/Photo9.webp" alt="Image 9" />
+      </div>
+      <div class="item"><img src="images/Photo10.webp" alt="Image 10" /></div>
+    </div>
+  </body>
+</html>

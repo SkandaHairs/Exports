@@ -1,0 +1,138 @@
+<head>
+  <!-- Add AOS Animation Library -->
+  <title>Order</title>
+  <meta
+    name="description"
+    content="Premium temple hair bundles, ethically sourced and globally shipped."
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+  <header data-aos="fade-down">
+    <a href="cart.html" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </a>
+    <!-- Skanda -->
+    HUMAN HAIR EXPORTS
+    <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
+  </header>
+  <nav data-aos="fade-up" class="collapsed">
+    <button class="hamburger" id="menuToggle">&#9776;</button>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Testimonials</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-socials">
+      <a
+        href="mailto:skanda@example.com"
+        class="contact-icon email"
+        title="Email"
+        target="_blank"
+      >
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a
+        href="https://wa.me/917010970898"
+        class="contact-icon whatsapp"
+        title="WhatsApp"
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a
+        href="https://www.instagram.com/skandahairofficial?igsh=MWRhZm1wcmpteGVycw=="
+        class="contact-icon instagram"
+        title="Instagram"
+        target="_blank"
+      >
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </nav>
+
+  <div id="alertOverlay">
+    <div class="alert-backdrop"></div>
+    <div id="customAlert" class="alert-box">
+      <p>hello</p>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+  </div>
+  <section class="section">
+    <div class="order-box" data-aos="fade">
+      <div class="order-row">
+        <img
+          id="previewImage"
+          src="images/hair1.webp"
+          alt="Premium Hair Sample"
+          class="orderside-image"
+          loading="lazy"
+        />
+        <div class="box">
+          <div class="dropdown-group">
+            <label for="length">Length</label>
+            <select id="length">
+              <option value="inch8">8 Inch</option>
+              <option value="inch10">10 Inch</option>
+              <option value="inch12">12 Inch</option>
+              <option value="inch14">14 Inch</option>
+              <option value="inch16">16 Inch</option>
+              <option value="inch18">18 Inch</option>
+              <option value="inch20">20 Inch</option>
+              <option value="inch22">22 Inch</option>
+              <option value="inch24">24 Inch</option>
+              <option value="inch26">26 Inch</option>
+              <option value="inch28">28 Inch</option>
+            </select>
+          </div>
+          <div class="dropdown-group">
+            <label for="type">Type</label>
+            <select id="hairType">
+              <option value="" selected disabled></option>
+              <option value="straight">Straight</option>
+              <option value="wavy">Wavy</option>
+              <option value="curly">Curly</option>
+            </select>
+          </div>
+          <div class="dropdown-group">
+            <label for="weight">Weight</label>
+            <select id="weight">
+              <option value="2KG">2KG</option>
+              <option value="5KG">5KG</option>
+            </select>
+          </div>
+          <div class="count-container">
+            <button class="count-btn" onclick="decrement()">−</button>
+            <input type="number" id="counter-value" value="1" min="1" />
+            <button class="count-btn" onclick="increment()">+</button>
+          </div>
+          <div class="price" id="price"></div>
+        </div>
+      </div>
+      <div class="order-footer">
+        <button onclick="cartpage()">Your Order Summary</button>
+        <button id="add">Add To Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025</p>
+  </footer>
+  <script src="main.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+</body>

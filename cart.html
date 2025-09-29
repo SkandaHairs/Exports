@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Summary</title>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="cart-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header data-aos="fade-down">
+      <!-- Skanda -->
+      HUMAN HAIR EXPORTS
+      <h6>"We Dont Just Export Hair -- We Export Confidence"</h6>
+    </header>
+    <nav data-aos="fade-up" class="collapsed">
+      <button class="hamburger" id="menuToggle">&#9776;</button>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Testimonials</a>
+        <a href="about.html">About</a>
+      </div>
+      <div class="nav-socials">
+        <a
+          href="mailto:skanda@example.com"
+          class="contact-icon email"
+          title="Email"
+          target="_blank"
+        >
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="https://wa.me/917010970898"
+          class="contact-icon whatsapp"
+          title="WhatsApp"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/skandahairofficial?igsh=MWRhZm1wcmpteGVycw=="
+          class="contact-icon instagram"
+          title="Instagram"
+          target="_blank"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </nav>
+
+    <div class="cart-container">
+      <div id="cart-display"></div>
+      <div class="checkout-bar" id="checkout-bar">
+        <button class="checkout-btn" onclick="handleCheckout()">
+          Proceed to Checkout
+        </button>
+        <span id="totalPrice" class="totalprice"></span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById("cart-display");
+        const checkoutBar = document.getElementById("checkout-bar");
+        const totalPriceSpan = document.getElementById("totalPrice");
+
+        function renderCart() {
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          container.innerHTML = "";
+
+          if (cart.length === 0) {
+            container.innerHTML = "<p>No items added yet.</p>";
+            checkoutBar.style.display = "none";
+            totalPriceSpan.textContent = "";
+            return;
+          }
+
+          let totalPrice = 0;
+
+          cart.forEach((item, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "cart-item";
+            itemDiv.innerHTML = `
+        <button class="cancel-btn" data-id="${index}">✖</button>
+        <div class="item-row">
+          <img src="images/img${item.type}.webp" alt="${
+              item.type
+            } Hair" class="cart-image" loading="lazy"/>
+          <div class="item-details">
+            <h3>ORDER ${index + 1}</h3>
+            <div class="attribute-row">
+              <p><strong>Length:</strong><span> ${item.length}</span></p>
+              <p><strong>Type:</strong><span> ${item.type}</span></p>
+              <p><strong>Weight:</strong><span> ${item.weight}</span></p>
+              <p><strong>Quantity:</strong><span> ${item.quantity}</span></p>
+              <p><strong>Price:</strong><span> ${item.price}</span></p>
+            </div>
+          </div>
+        </div>
+      `;
+            container.appendChild(itemDiv);
+            totalPrice += parseFloat(item.price);
+          });
+
+          checkoutBar.style.display = "block";
+          totalPriceSpan.textContent = `Total Price: ₹${totalPrice.toFixed(2)}`;
+        }
+
+        container.addEventListener("click", function (e) {
+          if (e.target.classList.contains("cancel-btn")) {
+            const index = parseInt(e.target.dataset.id);
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const itemElement = e.target.closest(".cart-item");
+            itemElement.style.transition = "opacity 0.5s ease";
+            itemElement.style.opacity = "0";
+
+            setTimeout(() => {
+              cart.splice(index, 1);
+              localStorage.setItem("cart", JSON.stringify(cart));
+              renderCart();
+            }, 500);
+          }
+        });
+
+        renderCart();
+
+        // handle checkout
+        function handleCheckout() {
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+
+          alert("Proceeding to checkout...");
+          // Redirect or show payment popup later
+        }
+      });
+    </script>
+    <script src="main.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1000 });
+    </script>
+  </body>
+</html>
