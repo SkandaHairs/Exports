@@ -165,7 +165,7 @@ const previewImage = document.getElementById("previewImage");
 
 hairTypeDropdown.addEventListener("change", function () {
   const selectedType = this.value;
-  previewImage.src = `"images/img${selectedType}.webp"`;
+  previewImage.src = `images/img${selectedType}.webp`;
   previewImage.alt = `${
     selectedType.charAt(0).toUpperCase() + selectedType.slice(1)
   } Hair Sample`;
